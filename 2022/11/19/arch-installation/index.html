@@ -1,0 +1,372 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>ArchLinux 与 Windows11 双系统安装记录 | Hycx233&#39;s Blog</title>
+        <meta name="author" content="hycx233">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="icon" href="https://s2.loli.net/2022/08/30/h7q1ckvJFnSNYor.jpg">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.2.0/js/all.min.js"></script>
+        
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">hycx233's Blog</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;主页</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;关于</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;归档</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;标签</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;hycx233's Blog</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">主页</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">关于</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">归档</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">标签</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
+    <div>
+        <h1>ArchLinux 与 Windows11 双系统安装记录 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/11/19
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/archlinux/" style="color: #ff7d73">
+                    archlinux
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/踩坑/" style="color: #03a9f4">
+                    踩坑
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/双系统/" style="color: #03a9f4">
+                    双系统
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    <div class="content" v-pre>
+        <h3 id="本文写于22年8月，部分内容可能已经过时"><a href="#本文写于22年8月，部分内容可能已经过时" class="headerlink" title="本文写于22年8月，部分内容可能已经过时"></a><strong>本文写于22年8月，部分内容可能已经过时</strong></h3><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>相较于一个安装教程&#x2F;指南，本文更多的是记录一个安装过程，因为我本人实际并无较多的Linux使用经历，所以本文仅供参考(您应当更多依赖于<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">官方文档</a>)，可能会存在错误之处，望指教。</p>
+<p>本文较长，且内含大量与我个人使用习惯相关的内容，其中部分内容因人而异，建议不要直接复制使用，先看好是否需要根据个人情况进行修改。</p>
+<p>另外，本文的安装记录是在已有Windows11的情况下安装Arch Linux双系统，不讨论Windows安装相关。</p>
+<h2 id="0-背景介绍"><a href="#0-背景介绍" class="headerlink" title="0. 背景介绍"></a>0. 背景介绍</h2><h3 id="0-1-个人背景"><a href="#0-1-个人背景" class="headerlink" title="0.1 个人背景"></a>0.1 个人背景</h3><p>作为一名疫情时代闲(ju)得(jue)发(nei)慌(juan)的宅男，在饱受了Windows的各种神奇小问题后，终于决定投向Linux的怀抱。之前就因为个人项目接触过Ubuntu，也曾闲得没事在虚拟机里装过一次Arch, 以及在实体机上成功安装了Win11 Manjaro双系统并使用了一小段时间，最近拿到了一块256g的ssd, 加之一直想要体验一下Arch的优雅和自由，于是决定再来折腾折腾。</p>
+<h3 id="0-2-硬件配置"><a href="#0-2-硬件配置" class="headerlink" title="0.2 硬件配置"></a>0.2 硬件配置</h3><p>电脑差不多用了四五年了，基本配置如下：</p>
+<ul>
+<li>主板: 华硕Z370F</li>
+<li>CPU: i7 8700K</li>
+<li>显卡: RTX 2080ti (ROG)</li>
+<li>内存: DDR4 8g✖2 + 16g✖2 (共48G, 3000Mhz, 海盗船)</li>
+<li>显示器: 华硕XG32VQ 2K@144hz （这显示器有个很影响使用的设计缺陷，有空开帖细说）</li>
+<li>键鼠: 海盗船M65 + K68</li>
+<li>主系统: WIndows11 (UEFI启动)</li>
+</ul>
+<p>(典型I+N, 高显低U, 最初是用来打游戏的)</p>
+<h3 id="0-3-为什么选择Win-Arch双系统"><a href="#0-3-为什么选择Win-Arch双系统" class="headerlink" title="0.3 为什么选择Win-Arch双系统"></a>0.3 为什么选择Win-Arch双系统</h3><h4 id="0-3-1-为何选择保留Windows使用双系统"><a href="#0-3-1-为何选择保留Windows使用双系统" class="headerlink" title="0.3.1 为何选择保留Windows使用双系统"></a>0.3.1 为何选择保留Windows使用双系统</h4><ol>
+<li>Windows下存有较多零散的重要文件，想要全部迁移过于耗时耗力</li>
+<li>工作流尚未能够完全脱离Windows，存在部分软件无法被完美平替，如Adobe全家桶，网课工作流等。在一些场景中，花两分钟切换系统使用这些软件所带来的效率提升可能比坚持使用一个不够完美的平替品要高</li>
+<li>存在一定的游戏需求，在WIndows下往往可以取得最佳体验</li>
+<li>家人偶尔会临时使用我的电脑，Windows系统更适合大多数人</li>
+<li>以防万一，两个系统同时炸的可能性较小</li>
+</ol>
+<h4 id="0-3-2-为何选择Arch-Linux"><a href="#0-3-2-为何选择Arch-Linux" class="headerlink" title="0.3.2 为何选择Arch Linux"></a>0.3.2 为何选择Arch Linux</h4><ol>
+<li>Arch的自由度较高，我能够更好地掌控自己的设备</li>
+<li>Arch拥有极其庞大的社区和优秀的官方文档，这对于我这种新手来说很友好</li>
+<li>Arch的滚动更新机制往往可以让你的系统和软件保持最新的状态，很好地跟上了软件更新的脚步，其Pacman与AUR的便用性也狠狠吸引到了我。</li>
+<li>单纯的想折腾着玩玩，毕竟绝大多数发行版安装难度都很低（指较为完善的图形化引导界面），而且Arch在很多方面确实有自己的特点</li>
+</ol>
+<h2 id="1-安装前准备"><a href="#1-安装前准备" class="headerlink" title="1. 安装前准备"></a>1. 安装前准备</h2><h3 id="1-1-下载Arch镜像"><a href="#1-1-下载Arch镜像" class="headerlink" title="1.1 下载Arch镜像"></a>1.1 下载Arch镜像</h3><p>你可以前往 <a target="_blank" rel="noopener" href="https://archlinux.org/">Arch Linux官网</a> 找到最新发行版，有很多国内镜像源可以下载。</p>
+<h3 id="1-2-创建USB启动盘"><a href="#1-2-创建USB启动盘" class="headerlink" title="1.2 创建USB启动盘"></a>1.2 创建USB启动盘</h3><p>先准备一个空间充足，可用于制作启动盘的U盘。<br>由于我是在Windows下制作启动盘，故使用了 <a target="_blank" rel="noopener" href="https://rufus.ie/">Rufus</a> 这个软件，选择下载的镜像路径，默认配置直接刻录到U盘上即可。</p>
+<p>Linux下可使用dd指令，这里不再赘述。</p>
+<h3 id="1-3-调整Windows时区设置"><a href="#1-3-调整Windows时区设置" class="headerlink" title="1.3 调整Windows时区设置"></a>1.3 调整Windows时区设置</h3><p>该操作主要是为了解决Windows与Linux对于硬件时间和时区偏移的处理方式不同造成的两系统相差8小时问题。具体原理在此不做过多描述。</p>
+<p>在Windows下，以管理员权限运行以下CMD指令</p>
+<p><code>reg add &quot;HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation&quot; /v RealTimeIsUniversal /d 1 /t REG_DWORD /f </code></p>
+<h3 id="1-4-在BIOS中关闭安全启动"><a href="#1-4-在BIOS中关闭安全启动" class="headerlink" title="1.4 在BIOS中关闭安全启动"></a>1.4 在BIOS中关闭安全启动</h3><p>由于不同厂商主板BIOS具体样式不一样，这里放出我的华硕Z370F的配置页面。</p>
+<p><del>因为时间久远图片找不到了，不管了不重要（</del></p>
+<h2 id="2-开始安装Arch"><a href="#2-开始安装Arch" class="headerlink" title="2. 开始安装Arch"></a>2. 开始安装Arch</h2><h3 id="2-1-进入BIOS，从U盘启动"><a href="#2-1-进入BIOS，从U盘启动" class="headerlink" title="2.1 进入BIOS，从U盘启动"></a>2.1 进入BIOS，从U盘启动</h3><p>与 1.4 类似，此处仅放出个人的设置。为了安装方便，暂时将启动顺序调整为优先从U盘启动。</p>
+<p>如果一切顺利，启动后您应看到如图界面。选择第一个选项并进入，稍等片刻等待初始化完成。</p>
+<p><del>因为时间久远图片找不到了，不管了不重要（</del></p>
+<h3 id="2-2-一些准备性工作"><a href="#2-2-一些准备性工作" class="headerlink" title="2.2 一些准备性工作"></a>2.2 一些准备性工作</h3><h4 id="2-2-1-禁用reflector服务"><a href="#2-2-1-禁用reflector服务" class="headerlink" title="2.2.1 禁用reflector服务"></a>2.2.1 禁用reflector服务</h4><p><code>systemctl stop reflector.service</code></p>
+<p>再次检查是否关闭</p>
+<p><code>systemctl status reflector.service</code></p>
+<h4 id="2-2-2-连接网络-有线"><a href="#2-2-2-连接网络-有线" class="headerlink" title="2.2.2 连接网络(有线)"></a>2.2.2 连接网络(有线)</h4><p>通常情况下，连接网线后会自动连接上互联网。<br>可使用ping指令来检测网络连接状况。</p>
+<p>此处不介绍无线网络的连接。</p>
+<h4 id="2-2-3-开启网络时间同步"><a href="#2-2-3-开启网络时间同步" class="headerlink" title="2.2.3 开启网络时间同步"></a>2.2.3 开启网络时间同步</h4><p><code>timedatectl set-ntp true</code></p>
+<h4 id="2-2-4-添加Pacman国内镜像源"><a href="#2-2-4-添加Pacman国内镜像源" class="headerlink" title="2.2.4 添加Pacman国内镜像源"></a>2.2.4 添加Pacman国内镜像源</h4><p><code>vim /etc/pacman.d/mirrorlist</code></p>
+<p>在其中已有列表最上方添加镜像源，如</p>
+<pre><code class="plain">Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch # 中国科学技术大学开源镜像站
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch # 清华大学开源软件镜像站
+Server = https://repo.huaweicloud.com/archlinux/$repo/os/$arch # 华为开源镜像站
+Server = http://mirror.lzu.edu.cn/archlinux/$repo/os/$arch # 兰州大学开源镜像站
+</code></pre>
+<h3 id="2-3-分区，格式化与挂载"><a href="#2-3-分区，格式化与挂载" class="headerlink" title="2.3 分区，格式化与挂载"></a>2.3 分区，格式化与挂载</h3><h4 id="2-3-1-磁盘分区"><a href="#2-3-1-磁盘分区" class="headerlink" title="2.3.1 磁盘分区"></a>2.3.1 磁盘分区</h4><p>先执行 <code>fdisk -l</code> 找到要安装的硬盘<br>再执行 <code>cfdisk &lt;disk&gt;</code> 开始分区硬盘</p>
+<p>考虑到Windows默认EFI分区仅有100M空间，共用该分区可能空间不足，因此又分配了512M的EFI分区</p>
+<p>本机的运行内存为48G，综合考虑后分出了32G用于swap</p>
+<p>剩余的空间全部分配默认的filesystem</p>
+<h4 id="2-3-2-格式化-Swap-分区"><a href="#2-3-2-格式化-Swap-分区" class="headerlink" title="2.3.2 格式化 Swap 分区"></a>2.3.2 格式化 Swap 分区</h4><p>先执行 <code>fdisk -l</code> 找到swap分区的device<br><code>mkswap &lt;device&gt;</code> 来格式化swap分区</p>
+<h4 id="2-3-3-格式化-Btrfs-分区"><a href="#2-3-3-格式化-Btrfs-分区" class="headerlink" title="2.3.3 格式化 Btrfs 分区"></a>2.3.3 格式化 Btrfs 分区</h4><p>使用 <code>mkfs.btrfs -L myArch &lt;device&gt;</code> 来格式化一个btrfs分区</p>
+<p>挂载brtfs分区到&#x2F;mnt<br><code>mount -t btrfs -o compress=zstd /dev/nvmexn1pn /mnt</code></p>
+<h4 id="2-3-4-创建-Btrfs-子卷"><a href="#2-3-4-创建-Btrfs-子卷" class="headerlink" title="2.3.4 创建 Btrfs 子卷"></a>2.3.4 创建 Btrfs 子卷</h4><pre><code class="bash">btrfs subvolume create /mnt/@ # 创建 / 目录子卷
+btrfs subvolume create /mnt/@home # 创建 /home 目录子卷
+</code></pre>
+<p>使用 <code>btrfs subvolume list -p /mnt</code> 检查子卷状态</p>
+<p>确认无误后取消挂载 <code>umount /mnt</code></p>
+<h4 id="2-3-5-格式化-x2F-boot-分区"><a href="#2-3-5-格式化-x2F-boot-分区" class="headerlink" title="2.3.5 格式化 &#x2F;boot 分区"></a>2.3.5 格式化 &#x2F;boot 分区</h4><p><code>mkfs.vfat -F32 &lt;device&gt;</code></p>
+<h4 id="2-3-6-挂载分区"><a href="#2-3-6-挂载分区" class="headerlink" title="2.3.6 挂载分区"></a>2.3.6 挂载分区</h4><pre><code class="bash">mount -t btrfs -o subvol=/@,compress=zstd &lt;device&gt; /mnt # 挂载 / 目录
+mkdir /mnt/home # 创建 /home 目录
+mount -t btrfs -o subvol=/@home,compress=zstd /dev/sdxn /mnt/home # 挂载 /home 目录
+mkdir -p /mnt/boot/efi # 创建 /boot/efi 目录
+mount /dev/sdxn /mnt/boot/efi # 挂载 /boot/efi 目录
+swapon /dev/sdxn # 挂载交换分区
+</code></pre>
+<p>使用 <code>df -h</code> 检查分区挂载情况</p>
+<p>使用 <code>free -h</code> 检查swap分区挂载情况</p>
+<h3 id="2-4-安装并进入系统"><a href="#2-4-安装并进入系统" class="headerlink" title="2.4 安装并进入系统"></a>2.4 安装并进入系统</h3><h4 id="2-4-1-安装基础包与必要软件包"><a href="#2-4-1-安装基础包与必要软件包" class="headerlink" title="2.4.1 安装基础包与必要软件包"></a>2.4.1 安装基础包与必要软件包</h4><pre><code class="bash">pacstrap /mnt base base-devel linux linux-firmware
+pacstrap /mnt dhcpcd iwd vim sudo zsh ntfs-3g dhcpcd zsh-completions
+</code></pre>
+<h4 id="2-4-2-生成-fstab-文件"><a href="#2-4-2-生成-fstab-文件" class="headerlink" title="2.4.2 生成 fstab 文件"></a>2.4.2 生成 fstab 文件</h4><p>使用 <code>genfstab -U /mnt &gt; /mnt/etc/fstab</code> 来自动生成fstab文件</p>
+<p>使用 <code>cat /mnt/etc/fstab</code> 来检查fstab文件是否正确</p>
+<h4 id="2-4-5-进入系统"><a href="#2-4-5-进入系统" class="headerlink" title="2.4.5 进入系统"></a>2.4.5 进入系统</h4><p>使用 <code>arch-chroot /mnt</code> 切换至新安装的系统</p>
+<p>如果无误，可以看到命令行提示符发生了改变</p>
+<h3 id="2-5-系统基本设置"><a href="#2-5-系统基本设置" class="headerlink" title="2.5 系统基本设置"></a>2.5 系统基本设置</h3><h4 id="2-5-1-设置主机名"><a href="#2-5-1-设置主机名" class="headerlink" title="2.5.1 设置主机名"></a>2.5.1 设置主机名</h4><p>使用 <code>vim /etc/hostname</code> 打开并添加需要更改的主机名</p>
+<p>使用 <code>vim /etc/hosts</code> 打开hosts文件，并添加如下内容</p>
+<pre><code class="plain">127.0.0.1   localhost
+::1         localhost
+127.0.1.1   myarch.localdomain	myarch
+</code></pre>
+<h4 id="2-5-2-设置时区，时间与区域"><a href="#2-5-2-设置时区，时间与区域" class="headerlink" title="2.5.2 设置时区，时间与区域"></a>2.5.2 设置时区，时间与区域</h4><p>设置时区为上海(UTC+8)<br><code>ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</code></p>
+<p>将系统时间同步到硬件时间<br><code>hwclock --systohc</code></p>
+<p>设置Locale<br><code>vim /etc/locale.gen</code></p>
+<p>取消注释 <code>en_US.UTF-8 UTF-8</code> 和 <code>zh_CN.UTF-8 UTF-8</code></p>
+<p>执行 <code>locale-gen</code> 来生成locale</p>
+<p>写入conf<br><code>echo &#39;LANG=en_US.UTF-8&#39;  &gt; /etc/locale.conf</code></p>
+<h4 id="2-5-3-设置root帐户密码"><a href="#2-5-3-设置root帐户密码" class="headerlink" title="2.5.3 设置root帐户密码"></a>2.5.3 设置root帐户密码</h4><p>使用 <code>passwd root</code> 来设置root密码</p>
+<h4 id="2-5-4-安装微码"><a href="#2-5-4-安装微码" class="headerlink" title="2.5.4 安装微码"></a>2.5.4 安装微码</h4><p>安装对应厂商的微码</p>
+<pre><code class="bash">pacman -S intel-ucode # Intel
+pacman -S amd-ucode # AMD
+</code></pre>
+<h4 id="2-5-5-安装引导程序"><a href="#2-5-5-安装引导程序" class="headerlink" title="2.5.5 安装引导程序"></a>2.5.5 安装引导程序</h4><p>首先安装对应的软件包<br><code>pacman -S grub efibootmgr os-prober</code></p>
+<p>安装grub到efi分区<br><code>grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=Arch</code></p>
+<p>编辑grub文件<br><code>vim /etc/default/grub</code></p>
+<p>将 <code>GRUB_DISABLE_OS_PROBER=false</code> 取消注释</p>
+<p>修改 <code>GRUB_CMDLINE_LINUX_DEFAULT</code> 这一行为 <code>GRUB_CMDLINE_LINUX_DEFAULT=&quot;loglevel=5 nowatchdog&quot;</code> 易于排除错误与提高开机速度</p>
+<p>保存并使用 <code>grub-mkconfig -o /boot/grub/grub.cfg</code> 来生成配置文件</p>
+<h3 id="2-6-完成安装"><a href="#2-6-完成安装" class="headerlink" title="2.6 完成安装"></a>2.6 完成安装</h3><pre><code class="bash">exit # 退回安装环境
+umount -R /mnt # 卸载新分区
+reboot # 重启
+</code></pre>
+<p>重启时拔掉启动U盘避免再次进入安装程序</p>
+<p>现在，应当可以选择arch系统并进入了</p>
+<p>执行 <code>systemctl enable --now dhcpcd </code> 来为dhcp服务设置开机自启，并立刻启动来连接网络。</p>
+<p>至此，完成了一个最简易的，无桌面环境的Arch Linux系统的安装。</p>
+<h2 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h2><h3 id="1-生成grub引导文件出错"><a href="#1-生成grub引导文件出错" class="headerlink" title="1. 生成grub引导文件出错"></a>1. 生成grub引导文件出错</h3><p>使用 <code>grub-mkconfig</code> 指令时，返回报错 <code>/usr/share/grub/grub-mkconfig_lib: 第237行: printf : &quot;$&quot;: 无效格式字符</code></p>
+<p>解决方案: 更改语言 <code>LANG=C</code> 后再次执行即可（注意权限）执行完后可再修改回中文。</p>
+<h3 id="2-Arch-Linux-CN-密钥错误问题"><a href="#2-Arch-Linux-CN-密钥错误问题" class="headerlink" title="2. Arch Linux CN 密钥错误问题"></a>2. Arch Linux CN 密钥错误问题</h3><p>执行</p>
+<pre><code class="bash">sudo pacman -S archlinuxcn-keyring
+
+sudo pacman -Syu haveged
+systemctl start haveged
+systemctl enable haveged
+sudo rm -rf /etc/pacman.d/gnupg
+sudo pacman-key --init
+sudo pacman-key --populate archlinux
+sudo pacman-key --populate archlinuxcn
+
+sudo pacman -S archlinuxcn-keyring
+</code></pre>
+<h3 id="3-蓝牙设备无法连接"><a href="#3-蓝牙设备无法连接" class="headerlink" title="3. 蓝牙设备无法连接"></a>3. 蓝牙设备无法连接</h3><p>配对后点击连接提示<code>br-connection-profile-unavailable</code></p>
+<p>尝试执行</p>
+<pre><code class="bash">pacmd load-module module-bluetooth-policy
+pacmd load-module module-bluetooth-discover
+</code></pre>
+<h3 id="4-双系统蓝牙设备需重新配对问题"><a href="#4-双系统蓝牙设备需重新配对问题" class="headerlink" title="4. 双系统蓝牙设备需重新配对问题"></a>4. 双系统蓝牙设备需重新配对问题</h3><p>先在Linux下配对一次设备（用于生成设备的配置文件），然后切换至Windows下，再次配对一次设备。</p>
+<p>以管理员权限打开注册表编辑器，切换至  <code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BTHPORT\Parameters\Keys\&lt;本机蓝牙 MAC&gt;</code> 中，找到蓝牙设备的MAC地址，将与其对应的key的数值数据记录下来。(如果出现无法读取Keys下的内容，可尝试在注册表编辑器得权限中为当前用户添加读取权限)</p>
+<p>来到Linux下，使用root权限，切换至 <code>/var/lib/bluetooth/&lt;本机蓝牙 MAC&gt;/&lt;蓝牙设备 MAC&gt;</code> 修改其中的 <code>info</code> 文件，将 <code>[LinkKey]</code> 中的 <code>Key</code> 改为Windows下记录的Key值，注意格式相同。</p>
+<p>如果还连接不上可以尝试重启一下。</p>
+<h3 id="5-开机进入KDE桌面后无法打开任何程序"><a href="#5-开机进入KDE桌面后无法打开任何程序" class="headerlink" title="5. 开机进入KDE桌面后无法打开任何程序"></a>5. 开机进入KDE桌面后无法打开任何程序</h3><p>具体表现为开机后能正常进入桌面并进行交互，但是点击任何程序，或尝试使用快捷键均无法唤起任何应用的窗口。</p>
+<p><code>Ctrl + Alt + F2</code> 进入tty后发现主机名变为了 <code>manjaro</code> （推测可能与我使用过manjaro live系统进行一些配置时的误操作有关）修改回原主机名后解决。</p>
+<h3 id="6-关闭tty等场景中无内容回格时烦人的蜂鸣器"><a href="#6-关闭tty等场景中无内容回格时烦人的蜂鸣器" class="headerlink" title="6. 关闭tty等场景中无内容回格时烦人的蜂鸣器"></a>6. 关闭tty等场景中无内容回格时烦人的蜂鸣器</h3><p>尝试执行 <code>rmmod pcspkr</code> 并在 <code>/etc/modprobe.d/nobeep.conf</code> 中添加 <code>blacklist pcspkr</code> 。注意需要root权限。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>自己动手多尝试，遇到问题先在网上查一查是否有相关解决方案。善用Timeshift等工具，避免出现不可逆的错误（建议更新较多&#x2F;重要软件包之前都做个备份以防万一）。</p>
+
+    </div>
+    
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.9.1/waline.min.css" />
+    <div id="comment">
+        <div id="waline-container"></div>
+    </div>
+    
+</div>
+                         
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2021 - 2022 hycx233&#39;s Blog
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @hycx233
+        </div>
+        <div>
+            当前页面浏览量: 
+            <span class="waline-pageview-count">
+            </span> 
+            | 主页浏览量: 
+            <span class="waline-pageview-count" data-path="/">
+            </span>
+        </div>
+
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+</footer>
+
+<script type="module">
+    import { pageviewCount } from 'https://unpkg.com/@waline/client/dist/pageview.mjs';
+  
+    pageviewCount({
+      serverURL: 'https://waline-o0wopoxmv-hycx233.vercel.app/',
+      path: window.location.pathname,
+  
+      // 可选的，用于自定选择器，默认为 `'.waline-pageview-count'`
+      // selector: 'waline-pageview-count',
+  
+      // 可选的，是否在获取时增加访问量，默认为 `true`
+      // update: true,
+    });
+  </script>
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        
+
+<script src="https://cdn.staticfile.org/waline/2.9.1/waline.min.js"></script>
+<script>
+    Waline.init({
+        el: '#waline-container',
+        serverURL: "https://waline-bt5dhqcuq-hycx233.vercel.app/",
+        commentCount: true,
+        pageview: true,
+        emoji: "https://unpkg.com/@waline/emojis@1.1.0/qq,https://unpkg.com/@waline/emojis@1.1.0/bilibili,https://unpkg.com/@waline/emojis@1.1.0/tieba,https://unpkg.com/@waline/emojis@1.1.0/weibo,https://unpkg.com/@waline/emojis@1.1.0/alus,https://unpkg.com/@waline/emojis@1.1.0/tw-emoji".split(','),
+        meta: "nick,mail,link".split(','),
+        requiredMeta: "nick".split(','),
+        lang: "zh-CN",
+        wordLimit: parseInt("1000"),
+        pageSize: "10",
+        login: "enable",
+        locale: {}
+    });
+</script>
+
+    </body>
+</html>
