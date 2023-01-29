@@ -3,35 +3,48 @@
 <html lang="zh-cn">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>Archives | Hycx233&#39;s Blog</title>
+        <title>Archives | hycx233&#39;s Blog</title>
         <meta name="author" content="hycx233">
         <meta name="description" content="">
         <meta name="keywords" content="">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
         <link rel="icon" href="https://s2.loli.net/2022/08/30/h7q1ckvJFnSNYor.jpg">
-        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
-        <script src="https://cdn.staticfile.org/font-awesome/6.2.0/js/all.min.js"></script>
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+        <script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+        <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css">
+        
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        
+        
+        <script src="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.16.4/contrib/auto-render.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.css">
+        
         
         <link rel="stylesheet" href="/css/fonts.min.css">
         <link rel="stylesheet" href="/css/particlex.css">
-        
-        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
     <meta name="generator" content="Hexo 6.3.0"></head>
-    
     <body>
-        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="loading" style="height: 100vh; width: 100vw; left: 0; top: 0; position: fixed; display: flex; z-index: 2147483647; justify-content: space-between; background: #fff; transition: opacity 0.3s ease-out, visibility 0.3s; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none">
+    <div style="position: fixed; height: 100vh; width: 100vw; display: flex; justify-content: center; align-items: center">
+        <div id="loadcontent" style="width: 50vmin; height: 50vmin; padding: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: solid 10px #a3ddfb; text-align: center">
+            <div>
+                <h2>LOADING...</h2>
+                <p style="word-break: keep-all">加载过慢请开启缓存（浏览器默认开启）</p>
+                <img alt="loading" src="/images/loading.gif" style="height: 50px">
+            </div>
+        </div>
+    </div>
+</div>
+
         <div id="layout">
-            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
-            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
-            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
             <transition name="into">
-                <div v-show="show_page" style="display: -not-none">
-                    <div id="menu_show">
-                         
-<nav id="menu">
+            <div id="main" v-show="showpage" style="display: -not-none">
+                <nav id="menu">
     <div class="desktop-menu">
-        <a href="/">
-            <span class="title">hycx233's Blog</span>
+        <a class="title" href="/">
+            <span>HYCX233&#39;S BLOG</span>
         </a>
         
         <a href="/">
@@ -55,14 +68,14 @@
         </a>
         
     </div>
-    <div :class="'phone-menu ' + menu_show" id="phone-menu">
-        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
-        <div :class="'title'" @click="menu_show = !menu_show">
+    <div :class="&quot;phone-menu &quot; + menushow" id="phone-menu">
+        <div class="curtain" @click="menushow = !menushow" v-show="menushow"></div>
+        <div class="title" @click="menushow = !menushow">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;hycx233's Blog</span>
+            <span>&emsp;HYCX233&#39;S BLOG</span>
         </div>
         <transition name="slide">
-        <div class="items" v-show="menu_show">
+        <div class="items" v-show="menushow">
             
             <a href="/">
                 <div class="item">
@@ -104,16 +117,19 @@
         </transition>
     </div>
 </nav>
-                    </div>
-                    <div id="main">
-                        
+
+                
 <div id="archives">
     
-    <div class="timeline">
+    <div id="search-mask" style="z-index: 4"></div>
+    <input id="search-bar" class="input" placeholder="搜索" style="z-index: 5">
+    
+    
+    <div class="timeline" style="z-index: 3" data-title="[吐槽]论华硕xg32vq显示器的设计缺陷">
         <div class="timeline-tail"></div>
         <div class="timeline-content">
-            <div class="item-time">2022/11/20</div>
-            <a href="/2022/11/20/asus-monitor/">
+            <div class="item-time">2023/1/29</div>
+            <a href="/2023/01/29/asus-monitor/">
                 <h3>[吐槽]论华硕XG32VQ显示器的设计缺陷</h3>
             </a>
             <div class="info">
@@ -121,49 +137,37 @@
                 
                 <span class="tags">
                     <span class="icon">
-                        <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+                        <i class="fa-solid fa-tags fa-fw"></i>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/踩坑/" style="color: #ffa2c4">
-                            踩坑
-                        </a>
+                        <a href="/tags/%E8%B8%A9%E5%9D%91/" style="color: #ffa2c4">踩坑</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/华硕/" style="color: #ff7d73">
-                            华硕
-                        </a>
+                        <a href="/tags/%E5%8D%8E%E7%A1%95/" style="color: #00a596">华硕</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/ASUS/" style="color: #00bcd4">
-                            ASUS
-                        </a>
+                        <a href="/tags/ASUS/" style="color: #00a596">ASUS</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/显示器/" style="color: #00a596">
-                            显示器
-                        </a>
+                        <a href="/tags/%E6%98%BE%E7%A4%BA%E5%99%A8/" style="color: #00a596">显示器</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/吐槽/" style="color: #00bcd4">
-                            吐槽
-                        </a>
+                        <a href="/tags/%E5%90%90%E6%A7%BD/" style="color: #00a596">吐槽</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/XG32VQ/" style="color: #00bcd4">
-                            XG32VQ
-                        </a>
+                        <a href="/tags/XG32VQ/" style="color: #00a596">XG32VQ</a>
                     </span>
                     
                 </span>
@@ -172,7 +176,7 @@
         </div>
     </div>
     
-    <div class="timeline">
+    <div class="timeline" style="z-index: 2" data-title="archlinux与windows11双系统安装记录">
         <div class="timeline-tail"></div>
         <div class="timeline-content">
             <div class="item-time">2022/11/19</div>
@@ -184,28 +188,22 @@
                 
                 <span class="tags">
                     <span class="icon">
-                        <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+                        <i class="fa-solid fa-tags fa-fw"></i>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/archlinux/" style="color: #00bcd4">
-                            archlinux
-                        </a>
+                        <a href="/tags/archlinux/" style="color: #00bcd4">archlinux</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/踩坑/" style="color: #ffa2c4">
-                            踩坑
-                        </a>
+                        <a href="/tags/%E8%B8%A9%E5%9D%91/" style="color: #03a9f4">踩坑</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/双系统/" style="color: #ffa2c4">
-                            双系统
-                        </a>
+                        <a href="/tags/%E5%8F%8C%E7%B3%BB%E7%BB%9F/" style="color: #00bcd4">双系统</a>
                     </span>
                     
                 </span>
@@ -214,7 +212,7 @@
         </div>
     </div>
     
-    <div class="timeline">
+    <div class="timeline" style="z-index: 1" data-title="test">
         <div class="timeline-tail"></div>
         <div class="timeline-content">
             <div class="item-time">2022/11/19</div>
@@ -226,28 +224,22 @@
                 
                 <span class="tags">
                     <span class="icon">
-                        <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+                        <i class="fa-solid fa-tags fa-fw"></i>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/test/" style="color: #ff7d73">
-                            test
-                        </a>
+                        <a href="/tags/test/" style="color: #ff7d73">test</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/测试/" style="color: #ffa2c4">
-                            测试
-                        </a>
+                        <a href="/tags/%E6%B5%8B%E8%AF%95/" style="color: #00bcd4">测试</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/hexo/" style="color: #ffa2c4">
-                            hexo
-                        </a>
+                        <a href="/tags/hexo/" style="color: #03a9f4">hexo</a>
                     </span>
                     
                 </span>
@@ -257,56 +249,32 @@
     </div>
     
 </div>
-                         
-<footer id="footer">
+
+                <footer id="footer">
     <div class="footer-wrap">
         <div>
-            © 2021 - 2022 hycx233&#39;s Blog
+            &copy;
+            2021 - 2023 hycx233&#39;s Blog
             <span class="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
-            @hycx233
+            &commat;hycx233
         </div>
-        <div>
-            当前页面浏览量: 
-            <span class="waline-pageview-count">
-            </span> 
-            | 主页浏览量: 
-            <span class="waline-pageview-count" data-path="/">
-            </span>
-        </div>
-
-        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
-                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp; <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
         
     </div>
 </footer>
 
-<script type="module">
-    import { pageviewCount } from 'https://unpkg.com/@waline/client/dist/pageview.mjs';
-  
-    pageviewCount({
-      serverURL: 'https://waline-o0wopoxmv-hycx233.vercel.app/',
-      path: window.location.pathname,
-  
-      // 可选的，用于自定选择器，默认为 `'.waline-pageview-count'`
-      // selector: 'waline-pageview-count',
-  
-      // 可选的，是否在获取时增加访问量，默认为 `true`
-      // update: true,
-    });
-  </script>
-                    </div>
-                </div>
+            </div>
             </transition>
-            <div id="img_show">
-                <img id="img_content" alt="img_show">
+            <div id="showimg">
+                <img id="showimg-content">
             </div>
         </div>
-        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
-        <script src="/js/particlex.js"></script>
-        <script src="/js/showimg.js"></script>
-        
+        <script src="/js/functions.js"></script>
+<script src="/js/particlex.js"></script>
+
 
     </body>
 </html>

@@ -3,35 +3,50 @@
 <html lang="zh-cn">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>Test | Hycx233&#39;s Blog</title>
+        <title>test | hycx233&#39;s Blog</title>
         <meta name="author" content="hycx233">
         <meta name="description" content="">
         <meta name="keywords" content="">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
         <link rel="icon" href="https://s2.loli.net/2022/08/30/h7q1ckvJFnSNYor.jpg">
-        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
-        <script src="https://cdn.staticfile.org/font-awesome/6.2.0/js/all.min.js"></script>
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+        <script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+        <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css">
+        
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        
+        
+        <script src="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.16.4/contrib/auto-render.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.css">
+        
+        
+        <script src="https://cdn.staticfile.org/crypto-js/4.1.1/crypto-js.min.js"></script>
         
         <link rel="stylesheet" href="/css/fonts.min.css">
         <link rel="stylesheet" href="/css/particlex.css">
-        
-        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
     <meta name="generator" content="Hexo 6.3.0"></head>
-    
     <body>
-        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="loading" style="height: 100vh; width: 100vw; left: 0; top: 0; position: fixed; display: flex; z-index: 2147483647; justify-content: space-between; background: #fff; transition: opacity 0.3s ease-out, visibility 0.3s; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none">
+    <div style="position: fixed; height: 100vh; width: 100vw; display: flex; justify-content: center; align-items: center">
+        <div id="loadcontent" style="width: 50vmin; height: 50vmin; padding: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: solid 10px #a3ddfb; text-align: center">
+            <div>
+                <h2>LOADING...</h2>
+                <p style="word-break: keep-all">加载过慢请开启缓存（浏览器默认开启）</p>
+                <img alt="loading" src="/images/loading.gif" style="height: 50px">
+            </div>
+        </div>
+    </div>
+</div>
+
         <div id="layout">
-            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
-            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
-            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
             <transition name="into">
-                <div v-show="show_page" style="display: -not-none">
-                    <div id="menu_show">
-                         
-<nav id="menu">
+            <div id="main" v-show="showpage" style="display: -not-none">
+                <nav id="menu">
     <div class="desktop-menu">
-        <a href="/">
-            <span class="title">hycx233's Blog</span>
+        <a class="title" href="/">
+            <span>HYCX233&#39;S BLOG</span>
         </a>
         
         <a href="/">
@@ -55,14 +70,14 @@
         </a>
         
     </div>
-    <div :class="'phone-menu ' + menu_show" id="phone-menu">
-        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
-        <div :class="'title'" @click="menu_show = !menu_show">
+    <div :class="&quot;phone-menu &quot; + menushow" id="phone-menu">
+        <div class="curtain" @click="menushow = !menushow" v-show="menushow"></div>
+        <div class="title" @click="menushow = !menushow">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;hycx233's Blog</span>
+            <span>&emsp;HYCX233&#39;S BLOG</span>
         </div>
         <transition name="slide">
-        <div class="items" v-show="menu_show">
+        <div class="items" v-show="menushow">
             
             <a href="/">
                 <div class="item">
@@ -104,17 +119,15 @@
         </transition>
     </div>
 </nav>
-                    </div>
-                    <div id="main">
-                        
-<div class="article">
+
+                <div class="article">
     <div>
-        <h1>Test </h1>
+        <h1>test </h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+                <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
             2022/11/19
         </span>
@@ -122,119 +135,94 @@
         
         <span class="tags">
             <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+                <i class="fa-solid fa-tags fa-fw"></i>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/test/" style="color: #03a9f4">
-                    test
-                </a>
+                <a href="/tags/test/" style="color: #00bcd4">test</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/测试/" style="color: #00bcd4">
-                    测试
-                </a>
+                <a href="/tags/%E6%B5%8B%E8%AF%95/" style="color: #ffa2c4">测试</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/hexo/" style="color: #00a596">
-                    hexo
-                </a>
+                <a href="/tags/hexo/" style="color: #00a596">hexo</a>
             </span>
             
         </span>
         
     </div>
-
-    <div class="content" v-pre>
-        <p><strong>测试推文</strong></p>
-<span id="more"></span>
-
-<h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><h3 id="Hello-World-1"><a href="#Hello-World-1" class="headerlink" title="Hello World"></a>Hello World</h3><pre><code class="bash">test code
-</code></pre>
-<p>Link: <a target="_blank" rel="noopener" href="https://blog.aksc.cc/">blog</a></p>
-
-    </div>
     
     
-    <link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.9.1/waline.min.css" />
+    <input id="crypto" class="input" placeholder="文章被加密，请输入密码" data-encrypt="U2FsdGVkX1/RI87BeskS+5GMuozaHk919i2UfEumuSlIgIQ6fKcr0Xfif3BwLAqCl4xVi0VxRbjSBqdoT/lLo+KEqKIapxFJXY3F11hvMubrvYeUJp4vQ0iGd6Klw9Ii/0jhiGrTdZW7p4yUnltL4UYTFP4xSNremsChzWgK1JRiNpRBDt/k1QB3p+DQ/jEC46uMIRK0RitFYP7ALSqs3mo+043WWd3e7PXAjfAWyUp4efrRau/ZMs/6XzjIuKAEvNyxHfBtOC6VmIhPg765/Qt7hvPblZqV6eRnH/ucjpSvhM8q8qR2skh8RCcqL4eBgUDKKZ2kR7H6yiNCOcn56IjI4Z0kH+NVtx0GTVZulRsSQbLsYJoqUal5u4Spm5EydBsAp9C28PdKogJHtF/kj94T8EmqV7TGAXmvkrFX7Ys/yqhYYR6SQfoD2/C6qYIRKl5OjgXOW/615wJxvmp93zOqcBgqefc+CoYc5hWCIxLe6xvrAWB08gWOWO+wYM30/BHcg9bSDHN4tEQ0cXafjblyPe9jrSdrMg5EvN9j0Npy0cBGXz+b8WoFteR23EID" data-shasum="d489ea0a1acc8c32804f60d9ec5720948d2ccdb030132f4feaec4a9a9de5439f">
+    <div class="content" v-pre style="opacity: 0"></div>
+    
+    
+    
+    
+    
     <div id="comment">
         <div id="waline-container"></div>
     </div>
     
+    
+    
 </div>
-                         
-<footer id="footer">
+
+                <footer id="footer">
     <div class="footer-wrap">
         <div>
-            © 2021 - 2022 hycx233&#39;s Blog
+            &copy;
+            2021 - 2023 hycx233&#39;s Blog
             <span class="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
-            @hycx233
+            &commat;hycx233
         </div>
-        <div>
-            当前页面浏览量: 
-            <span class="waline-pageview-count">
-            </span> 
-            | 主页浏览量: 
-            <span class="waline-pageview-count" data-path="/">
-            </span>
-        </div>
-
-        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
-                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp; <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
         
     </div>
 </footer>
 
-<script type="module">
-    import { pageviewCount } from 'https://unpkg.com/@waline/client/dist/pageview.mjs';
-  
-    pageviewCount({
-      serverURL: 'https://waline-o0wopoxmv-hycx233.vercel.app/',
-      path: window.location.pathname,
-  
-      // 可选的，用于自定选择器，默认为 `'.waline-pageview-count'`
-      // selector: 'waline-pageview-count',
-  
-      // 可选的，是否在获取时增加访问量，默认为 `true`
-      // update: true,
-    });
-  </script>
-                    </div>
-                </div>
+            </div>
             </transition>
-            <div id="img_show">
-                <img id="img_content" alt="img_show">
+            <div id="showimg">
+                <img id="showimg-content">
             </div>
         </div>
-        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
-        <script src="/js/particlex.js"></script>
-        <script src="/js/showimg.js"></script>
-        
+        <script src="/js/functions.js"></script>
+<script src="/js/particlex.js"></script>
 
-<script src="https://cdn.staticfile.org/waline/2.9.1/waline.min.js"></script>
+
+
+
+<script src="https://cdn.staticfile.org/waline/2.14.7/waline.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.7/waline.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.7/waline-meta.min.css">
 <script>
     Waline.init({
-        el: '#waline-container',
-        serverURL: "https://waline-bt5dhqcuq-hycx233.vercel.app/",
+        el: "#waline-container",
+        serverURL: "https://waline-bt5dhqcuq-hycx233.vercel.app/# Waline server address url, you should set this to your own link",
         commentCount: true,
         pageview: true,
-        emoji: "https://unpkg.com/@waline/emojis@1.1.0/qq,https://unpkg.com/@waline/emojis@1.1.0/bilibili,https://unpkg.com/@waline/emojis@1.1.0/tieba,https://unpkg.com/@waline/emojis@1.1.0/weibo,https://unpkg.com/@waline/emojis@1.1.0/alus,https://unpkg.com/@waline/emojis@1.1.0/tw-emoji".split(','),
-        meta: "nick,mail,link".split(','),
-        requiredMeta: "nick".split(','),
+        emoji: "https://unpkg.com/@waline/emojis@1.2.0/qq,https://unpkg.com/@waline/emojis@1.2.0/bilibili,https://unpkg.com/@waline/emojis@1.2.0/tieba,https://unpkg.com/@waline/emojis@1.2.0/weibo,https://unpkg.com/@waline/emojis@1.2.0/alus,https://unpkg.com/@waline/emojis@1.2.0/tw-emoji".split(","),
+        meta: "nick,mail,link".split(","),
+        requiredMeta: "nick".split(","),
         lang: "zh-CN",
-        wordLimit: parseInt("1000"),
+        wordLimit: 0,
         pageSize: "10",
         login: "enable",
-        locale: {}
+        locale: {},
     });
 </script>
+
+
+
 
     </body>
 </html>

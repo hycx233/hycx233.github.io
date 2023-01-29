@@ -3,35 +3,48 @@
 <html lang="zh-cn">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>ArchLinux 与 Windows11 双系统安装记录 | Hycx233&#39;s Blog</title>
+        <title>ArchLinux 与 Windows11 双系统安装记录 | hycx233&#39;s Blog</title>
         <meta name="author" content="hycx233">
         <meta name="description" content="">
         <meta name="keywords" content="">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
         <link rel="icon" href="https://s2.loli.net/2022/08/30/h7q1ckvJFnSNYor.jpg">
-        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
-        <script src="https://cdn.staticfile.org/font-awesome/6.2.0/js/all.min.js"></script>
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+        <script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+        <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css">
+        
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        
+        
+        <script src="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.16.4/contrib/auto-render.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.css">
+        
         
         <link rel="stylesheet" href="/css/fonts.min.css">
         <link rel="stylesheet" href="/css/particlex.css">
-        
-        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
     <meta name="generator" content="Hexo 6.3.0"></head>
-    
     <body>
-        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="loading" style="height: 100vh; width: 100vw; left: 0; top: 0; position: fixed; display: flex; z-index: 2147483647; justify-content: space-between; background: #fff; transition: opacity 0.3s ease-out, visibility 0.3s; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none">
+    <div style="position: fixed; height: 100vh; width: 100vw; display: flex; justify-content: center; align-items: center">
+        <div id="loadcontent" style="width: 50vmin; height: 50vmin; padding: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: solid 10px #a3ddfb; text-align: center">
+            <div>
+                <h2>LOADING...</h2>
+                <p style="word-break: keep-all">加载过慢请开启缓存（浏览器默认开启）</p>
+                <img alt="loading" src="/images/loading.gif" style="height: 50px">
+            </div>
+        </div>
+    </div>
+</div>
+
         <div id="layout">
-            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
-            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
-            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
             <transition name="into">
-                <div v-show="show_page" style="display: -not-none">
-                    <div id="menu_show">
-                         
-<nav id="menu">
+            <div id="main" v-show="showpage" style="display: -not-none">
+                <nav id="menu">
     <div class="desktop-menu">
-        <a href="/">
-            <span class="title">hycx233's Blog</span>
+        <a class="title" href="/">
+            <span>HYCX233&#39;S BLOG</span>
         </a>
         
         <a href="/">
@@ -55,14 +68,14 @@
         </a>
         
     </div>
-    <div :class="'phone-menu ' + menu_show" id="phone-menu">
-        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
-        <div :class="'title'" @click="menu_show = !menu_show">
+    <div :class="&quot;phone-menu &quot; + menushow" id="phone-menu">
+        <div class="curtain" @click="menushow = !menushow" v-show="menushow"></div>
+        <div class="title" @click="menushow = !menushow">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;hycx233's Blog</span>
+            <span>&emsp;HYCX233&#39;S BLOG</span>
         </div>
         <transition name="slide">
-        <div class="items" v-show="menu_show">
+        <div class="items" v-show="menushow">
             
             <a href="/">
                 <div class="item">
@@ -104,17 +117,15 @@
         </transition>
     </div>
 </nav>
-                    </div>
-                    <div id="main">
-                        
-<div class="article">
+
+                <div class="article">
     <div>
         <h1>ArchLinux 与 Windows11 双系统安装记录 </h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+                <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
             2022/11/19
         </span>
@@ -122,34 +133,28 @@
         
         <span class="tags">
             <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+                <i class="fa-solid fa-tags fa-fw"></i>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/archlinux/" style="color: #ff7d73">
-                    archlinux
-                </a>
+                <a href="/tags/archlinux/" style="color: #03a9f4">archlinux</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/踩坑/" style="color: #03a9f4">
-                    踩坑
-                </a>
+                <a href="/tags/%E8%B8%A9%E5%9D%91/" style="color: #03a9f4">踩坑</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/双系统/" style="color: #ffa2c4">
-                    双系统
-                </a>
+                <a href="/tags/%E5%8F%8C%E7%B3%BB%E7%BB%9F/" style="color: #ffa2c4">双系统</a>
             </span>
             
         </span>
         
     </div>
-
+    
     <div class="content" v-pre>
         <h3 id="本文写于22年8月，部分内容可能已经过时"><a href="#本文写于22年8月，部分内容可能已经过时" class="headerlink" title="本文写于22年8月，部分内容可能已经过时"></a><strong>本文写于22年8月，部分内容可能已经过时</strong></h3><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>相较于一个安装教程&#x2F;指南，本文更多的是记录一个安装过程，因为我本人实际并无较多的Linux使用经历，所以本文仅供参考(您应当更多依赖于<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">官方文档</a>)，可能会存在错误之处，望指教。</p>
 <p>本文较长，且内含大量与我个人使用习惯相关的内容，其中部分内容因人而异，建议不要直接复制使用，先看好是否需要根据个人情况进行修改。</p>
@@ -163,7 +168,7 @@
 <li>内存: DDR4 8g✖2 + 16g✖2 (共48G, 3000Mhz, 海盗船)</li>
 <li>显示器: 华硕XG32VQ 2K@144hz （这显示器有个很影响使用的设计缺陷，有空开帖细说）</li>
 <li>键鼠: 海盗船M65 + K68</li>
-<li>主系统: WIndows11 (UEFI启动)</li>
+<li>主系统: Windows11 (22&#x2F;01更新，目前是win10 21h1 ltsc)</li>
 </ul>
 <p>(典型I+N, 高显低U, 最初是用来打游戏的)</p>
 <h3 id="0-3-为什么选择Win-Arch双系统"><a href="#0-3-为什么选择Win-Arch双系统" class="headerlink" title="0.3 为什么选择Win-Arch双系统"></a>0.3 为什么选择Win-Arch双系统</h3><h4 id="0-3-1-为何选择保留Windows使用双系统"><a href="#0-3-1-为何选择保留Windows使用双系统" class="headerlink" title="0.3.1 为何选择保留Windows使用双系统"></a>0.3.1 为何选择保留Windows使用双系统</h4><ol>
@@ -295,80 +300,67 @@ pacmd load-module module-bluetooth-discover
     </div>
     
     
-    <link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.9.1/waline.min.css" />
+    
+    
+    
     <div id="comment">
         <div id="waline-container"></div>
     </div>
     
+    
+    
 </div>
-                         
-<footer id="footer">
+
+                <footer id="footer">
     <div class="footer-wrap">
         <div>
-            © 2021 - 2022 hycx233&#39;s Blog
+            &copy;
+            2021 - 2023 hycx233&#39;s Blog
             <span class="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
-            @hycx233
+            &commat;hycx233
         </div>
-        <div>
-            当前页面浏览量: 
-            <span class="waline-pageview-count">
-            </span> 
-            | 主页浏览量: 
-            <span class="waline-pageview-count" data-path="/">
-            </span>
-        </div>
-
-        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
-                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp; <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
         
     </div>
 </footer>
 
-<script type="module">
-    import { pageviewCount } from 'https://unpkg.com/@waline/client/dist/pageview.mjs';
-  
-    pageviewCount({
-      serverURL: 'https://waline-o0wopoxmv-hycx233.vercel.app/',
-      path: window.location.pathname,
-  
-      // 可选的，用于自定选择器，默认为 `'.waline-pageview-count'`
-      // selector: 'waline-pageview-count',
-  
-      // 可选的，是否在获取时增加访问量，默认为 `true`
-      // update: true,
-    });
-  </script>
-                    </div>
-                </div>
+            </div>
             </transition>
-            <div id="img_show">
-                <img id="img_content" alt="img_show">
+            <div id="showimg">
+                <img id="showimg-content">
             </div>
         </div>
-        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
-        <script src="/js/particlex.js"></script>
-        <script src="/js/showimg.js"></script>
-        
+        <script src="/js/functions.js"></script>
+<script src="/js/particlex.js"></script>
 
-<script src="https://cdn.staticfile.org/waline/2.9.1/waline.min.js"></script>
+
+
+
+<script src="https://cdn.staticfile.org/waline/2.14.7/waline.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.7/waline.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.7/waline-meta.min.css">
 <script>
     Waline.init({
-        el: '#waline-container',
-        serverURL: "https://waline-bt5dhqcuq-hycx233.vercel.app/",
+        el: "#waline-container",
+        serverURL: "https://waline-bt5dhqcuq-hycx233.vercel.app/# Waline server address url, you should set this to your own link",
         commentCount: true,
         pageview: true,
-        emoji: "https://unpkg.com/@waline/emojis@1.1.0/qq,https://unpkg.com/@waline/emojis@1.1.0/bilibili,https://unpkg.com/@waline/emojis@1.1.0/tieba,https://unpkg.com/@waline/emojis@1.1.0/weibo,https://unpkg.com/@waline/emojis@1.1.0/alus,https://unpkg.com/@waline/emojis@1.1.0/tw-emoji".split(','),
-        meta: "nick,mail,link".split(','),
-        requiredMeta: "nick".split(','),
+        emoji: "https://unpkg.com/@waline/emojis@1.2.0/qq,https://unpkg.com/@waline/emojis@1.2.0/bilibili,https://unpkg.com/@waline/emojis@1.2.0/tieba,https://unpkg.com/@waline/emojis@1.2.0/weibo,https://unpkg.com/@waline/emojis@1.2.0/alus,https://unpkg.com/@waline/emojis@1.2.0/tw-emoji".split(","),
+        meta: "nick,mail,link".split(","),
+        requiredMeta: "nick".split(","),
         lang: "zh-CN",
-        wordLimit: parseInt("1000"),
+        wordLimit: 0,
         pageSize: "10",
         login: "enable",
-        locale: {}
+        locale: {},
     });
 </script>
+
+
+
 
     </body>
 </html>

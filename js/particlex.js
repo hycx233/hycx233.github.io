@@ -1,76 +1,104 @@
-hljs.highlightAll();
-hljs.configure({ ignoreUnescapedHTML: true });
-const App = Vue.createApp({
+const app = Vue.createApp({
     data() {
         return {
-            show_page: false,
-            menu_show: false,
-            card_top: 100,
-            bar_local: 0,
+            showpage: false,
+            menushow: false,
+            cardtop: 100,
+            barlocal: 0,
+            composition: false,
         };
     },
     created() {
-        var that = this;
         window.addEventListener("load", () => {
-            that.show_page = true;
+            this.showpage = true;
             document.getElementById("loading").style.opacity = 0;
-            setTimeout(function () {
-                document.getElementById("loading").style.display = "none";
-            }, 300);
+            document.getElementById("loading").style.visibility = "hidden";
         });
     },
     mounted() {
         if (document.getElementById("home-head"))
             document.getElementById("menu").className += " menu-color";
-        window.addEventListener("scroll", this.handleScroll, true);
-        var codes = document.getElementsByTagName("pre");
-        for (var code of codes) {
-            const lang = code.firstChild.className.split(/\s+/).filter((x) => {
-                return x != "sourceCode";
-            })[0] || "text";
-            let content = document.createElement("div");
-            content.classList.add("code-content");
-            content.innerHTML = code.innerHTML;
-            let language = document.createElement("div");
-            language.classList.add("language");
-            language.innerHTML = lang;
-            let copycode = document.createElement("div");
-            copycode.classList.add("copycode");
-            copycode.innerHTML =
-                '<i class="fa-solid fa-copy"></i><i class="fa-solid fa-clone"></i>';
-            copycode.addEventListener("click", async function () {
-                await navigator.clipboard.writeText(
-                    this.parentElement.firstChild.innerText
-                );
-                copycode.classList.add("copied");
-                setTimeout(() => {
-                    copycode.classList.remove("copied");
-                }, 1500);
+        if (document.getElementById("crypto")) {
+            let input = document.getElementById("crypto");
+            input.addEventListener("input", () => {
+                if (!this.composition) this.handlecrypto();
             });
-            code.innerHTML = "";
-            code.append(content, language, copycode);
+            input.addEventListener("compositionstart", () => {
+                this.composition = true;
+            });
+            input.addEventListener("compositionend", () => {
+                this.handlecrypto();
+                this.composition = false;
+            });
         }
+        if (document.getElementById("search-bar")) {
+            let input = document.getElementById("search-bar");
+            input.addEventListener("input", () => {
+                if (!this.composition) this.handlesearch();
+            });
+            input.addEventListener("compositionstart", () => {
+                this.composition = true;
+            });
+            input.addEventListener("compositionend", () => {
+                this.handlesearch();
+                this.composition = false;
+            });
+        }
+        window.addEventListener("scroll", this.handlescroll, true);
+        this.render();
     },
     methods: {
-        home_click() {
-            window.scrollTo({
-                top: window.innerHeight,
-                behavior: "smooth",
-            });
+        homeclick() {
+            window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
         },
-        handleScroll() {
-            var new_local = document.documentElement.scrollTop;
-            var menu = document.getElementById("menu");
-            var that = this;
-            if (this.bar_local < new_local) {
+        render() {
+            highlight();
+            showimg();
+            rendermath();
+        },
+        handlescroll() {
+            let newlocal = document.documentElement.scrollTop;
+            let menu = document.getElementById("menu");
+            let wrap = document.getElementById("home-posts-wrap");
+            if (this.barlocal < newlocal) {
                 menu.className = "hidden-menu";
-                that.menu_show = false;
+                this.menushow = false;
             } else menu.className = "show-menu";
-            if (document.getElementById("home-posts-wrap"))
-                if (new_local <= window.innerHeight - 100)
-                    menu.className += " menu-color";
-            this.bar_local = new_local;
+            if (wrap) {
+                if (newlocal <= window.innerHeight - 100) menu.className += " menu-color";
+                if (newlocal <= 400) wrap.style.marginTop = newlocal / -5 + "px";
+                else wrap.style.marginTop = "-80px";
+            }
+            this.barlocal = newlocal;
+        },
+        handlecrypto() {
+            let input = document.getElementById("crypto"),
+                content = document.getElementsByClassName("content")[0];
+            let res = decrypt(input.dataset.encrypt, input.value, input.dataset.shasum);
+            if (res.check) {
+                input.disabled = true;
+                input.classList.remove("fail");
+                input.classList.add("success");
+                content.innerHTML = res.decrypt;
+                content.style.opacity = 1;
+                this.render();
+            } else input.classList.add("fail");
+        },
+        handlesearch() {
+            let input = document.getElementById("search-bar"),
+                timeline = document.getElementsByClassName("timeline"),
+                key = input.value.toLowerCase().replace(/s+/gm, "");
+            for (let i of timeline)
+                if (!key || i.dataset.title.includes(key)) {
+                    i.style.opacity = 1;
+                    i.style.pointerEvents = "";
+                    i.style.marginTop = "";
+                } else {
+                    i.style.opacity = 0;
+                    i.style.pointerEvents = "none";
+                    i.style.marginTop = -i.offsetHeight - 30 + "px";
+                }
         },
     },
 });
-App.mount("#layout");
+app.mount("#layout");
