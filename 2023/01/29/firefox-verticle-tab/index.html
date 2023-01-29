@@ -3,7 +3,7 @@
 <html lang="zh-cn">
     <head>
         <meta charset="UTF-8">
-        <title>about | hycx233&#39;s Blog</title>
+        <title>在Firefox实现垂直标签栏提高使用效率 | hycx233&#39;s Blog</title>
         <meta name="author" content="hycx233">
         <meta name="description" content="">
         <meta name="keywords" content="">
@@ -120,34 +120,103 @@
 
                 <div class="article">
     <div>
-        <h1>about </h1>
+        <h1>在Firefox实现垂直标签栏提高使用效率 </h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2022/11/19
+            2023/1/29
         </span>
         
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/firefox/" style="color: #ff7d73">firefox</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E7%81%AB%E7%8B%90/" style="color: #00a596">火狐</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%AE%9E%E7%94%A8/" style="color: #00bcd4">实用</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="color: #00a596">浏览器</a>
+            </span>
+            
+        </span>
         
     </div>
     
     <div class="content" v-pre>
-        <h1 id="Hello-I’m-hycx233"><a href="#Hello-I’m-hycx233" class="headerlink" title="Hello, I’m hycx233"></a>Hello, I’m hycx233</h1><h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><p>一个普通高中生，喜欢折腾各种东西，尝试学习编程中…</p>
-<h3 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h3><p><i class="fa-brands fa-qq"></i> QQ: <a target="_blank" rel="noopener" href="https://qm.qq.com/cgi-bin/qm/qr?k=RIWgBP8M3QccTur4MJN63nl_yfch4Lbk&noverify=0">3442535256</a></p>
-<p><i class="fa-brands fa-github"></i> Github: <a target="_blank" rel="noopener" href="https://github.com/hycx233">hycx233</a></p>
-<p><i class="fa-solid fa-envelope"></i> Email: <a href="mailto:&#x68;&#121;&#x63;&#120;&#x32;&#51;&#51;&#x33;&#x40;&#111;&#x75;&#116;&#108;&#x6f;&#x6f;&#x6b;&#46;&#x63;&#x6f;&#x6d;">&#x68;&#121;&#x63;&#120;&#x32;&#51;&#51;&#x33;&#x40;&#111;&#x75;&#116;&#108;&#x6f;&#x6f;&#x6b;&#46;&#x63;&#x6f;&#x6d;</a></p>
-<p><i class="fa-brands fa-telegram"></i> Telegram: <a target="_blank" rel="noopener" href="https://t.me/hycx233">hycx233</a></p>
-<p><i class="fa-brands fa-bilibili"></i> Bilibili: <a target="_blank" rel="noopener" href="https://space.bilibili.com/69932808">hycx233</a></p>
-<h2 id="关于本站"><a href="#关于本站" class="headerlink" title="关于本站"></a>关于本站</h2><p>本站基于 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> 与 <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a> 搭建，部署于 <a target="_blank" rel="noopener" href="https://pages.github.com/">Github Pages</a> &#x2F; <a target="_blank" rel="noopener" href="https://www.netlify.com/">Netlify</a>。本站引入了 <a target="_blank" rel="noopener" href="https://waline.js.org/">Waline</a> 作为评论系统。</p>
-<p>注：由于网络问题，在中国大陆直连本站可能会出现加载缓慢，无法打开网页，无法评论等问题，建议使用代理访问。</p>
-<p>本站使用的头图来自<a target="_blank" rel="noopener" href="https://www.pixiv.net/">Pixiv</a>画师 <a target="_blank" rel="noopener" href="https://www.pixiv.net/users/72519110">カステラ豆腐</a> 的 <a target="_blank" rel="noopener" href="https://arcaea.lowiro.com/">Arcaea</a> 同人作品 <a target="_blank" rel="noopener" href="https://www.pixiv.net/artworks/100356910">Reunion 光と対立</a></p>
-<p>如有侵权，请联系hycx233删除。</p>
-<h3 id="本站内容"><a href="#本站内容" class="headerlink" title="本站内容"></a>本站内容</h3><p>1.(低技术力) <del>技术向</del><br>2.踩坑记录<br>3.资源分享<br>4.使用经历<br>5.奇闻趣事<br>…</p>
-<h2 id="友情链接"><a href="#友情链接" class="headerlink" title="友情链接"></a>友情链接</h2><p>*排名不分先后</p>
-<p><a target="_blank" rel="noopener" href="https://www.vastsea.cc/">瀚海工艺</a>: 立志成为领先的Minecraft轨交城建服务器。同时也是本人参与到的项目之一。</p>
-<p><a target="_blank" rel="noopener" href="https://www.niuboss123.com/">NiuBoss123</a>: 生命中曾拥有过的所有灿烂，终究都需要用寂寞偿还。</p>
+        <h2 id="引言-amp-介绍"><a href="#引言-amp-介绍" class="headerlink" title="引言&amp;介绍"></a>引言&amp;介绍</h2><p>我曾经在windows用过一段时间的新版Edge浏览器，它给我留下最大的印象便是大大提高标签页切换效率的<strong>垂直标签栏</strong>。在打开了数十个网页后，水平标签栏基本只剩下了一堆icon，实在是难以快速找到需要的标签页。而可自动隐藏的垂直标签栏很好的解决了这个问题——默认状态下，其在左侧占据一个很窄的宽度，显示标签页的icon，鼠标移动上去就可以看到较为详细的网站标题名，大大提高了标签页较多时的切换效率。</p>
+<p>在火狐浏览器中，我们可以使用浏览器扩展 <a target="_blank" rel="noopener" href="https://addons.mozilla.org/zh-CN/firefox/addon/tree-style-tab/">Tree Style Tab - 树状标签页管理</a> 达成垂直标签栏的效果。更进一步搭配自定义css规则，我们便可以实现自动隐藏等功能。这里给出Github上一位大佬的<a target="_blank" rel="noopener" href="https://gist.github.com/theprojectsomething/6813b2c27611be03e67c78d936b0f760">Gist</a>中提供的现成的解决方案。</p>
+<h2 id="使用教程"><a href="#使用教程" class="headerlink" title="使用教程"></a>使用教程</h2><ol>
+<li><p>在浏览器打开<code>about:config</code>，搜索并设置<code>toolkit.legacyUserProfileCustomizations.stylesheets</code>为<code>true</code>。</p>
+</li>
+<li><p>在浏览器打开<code>about:profiles</code>，找到正在使用的用户配置(profile in use)，找到根目录(Root Directory)并打开文件夹(Open Directory)，创建文件夹<code>chrome</code>，并将<a target="_blank" rel="noopener" href="https://gist.github.com/theprojectsomething/6813b2c27611be03e67c78d936b0f760#file-userchrome-css">userChrome.css</a>保存在<code>chrome</code>文件夹中。重启浏览器。</p>
+</li>
+<li><p>前往官方扩展商城，安装 <a target="_blank" rel="noopener" href="https://addons.mozilla.org/zh-CN/firefox/addon/tree-style-tab/">Tree Style Tab - 树状标签页管理</a> 扩展。</p>
+</li>
+<li><p>在浏览器打开<code>about:addons</code>，找到Tree Style Tab，进入偏好设置(Preferences)，找到高级(Advanced)中的标签栏内容的额外规则(Extra style rules for sidebar contents)，将<a target="_blank" rel="noopener" href="https://gist.github.com/theprojectsomething/6813b2c27611be03e67c78d936b0f760#file-tree-style-tabs-theme-css">tree-style-tabs-theme.css</a>中的内容复制进其中。</p>
+</li>
+</ol>
+<h2 id="额外优化"><a href="#额外优化" class="headerlink" title="额外优化"></a>额外优化</h2><h3 id="缩短自动隐藏-收回-的延迟时间"><a href="#缩短自动隐藏-收回-的延迟时间" class="headerlink" title="缩短自动隐藏(收回)的延迟时间"></a>缩短自动隐藏(收回)的延迟时间</h3><p>该方案由gist中另一位用户提出。<a target="_blank" rel="noopener" href="https://gist.github.com/theprojectsomething/6813b2c27611be03e67c78d936b0f760?permalink_comment_id=4159517#gistcomment-4159517">原文</a></p>
+<p>找到<code>userChrome.css</code>的这一段代码：</p>
+<pre><code class="css">#sidebar-box[sidebarcommand=&quot;treestyletab_piro_sakura_ne_jp-sidebar-action&quot;] &#123;
+  overflow: hidden !important;
+  position: relative !important;
+  transition: all 0.2s var(--tst-sidepanel-hide-delay) !important;
+  min-width: var(--thin-tab-width) !important;
+  max-width: var(--thin-tab-width) !important;
+  z-index: 2;
+&#125;
+#sidebar-box[sidebarcommand=&quot;treestyletab_piro_sakura_ne_jp-sidebar-action&quot;]:hover,
+#sidebar-box[sidebarcommand=&quot;treestyletab_piro_sakura_ne_jp-sidebar-action&quot;] #sidebar &#123;
+  transition-delay: 0s !important;
+  min-width: var(--wide-tab-width) !important;
+  max-width: var(--wide-tab-width) !important;
+  z-index: 1;
+&#125;
+</code></pre>
+<p>将其替换为：</p>
+<pre><code class="css">#sidebar-box[sidebarcommand=&quot;treestyletab_piro_sakura_ne_jp-sidebar-action&quot;] &#123;
+    overflow: hidden !important;
+    position: relative !important;
+    transition: all 300ms !important; /*这一行的300ms可以修改为适当的数值*/
+    min-width: var(--thin-tab-width) !important;
+    max-width: var(--thin-tab-width) !important;
+    z-index: 2;
+&#125;
+#sidebar-box[sidebarcommand=&quot;treestyletab_piro_sakura_ne_jp-sidebar-action&quot;]:hover,
+#sidebar-box[sidebarcommand=&quot;treestyletab_piro_sakura_ne_jp-sidebar-action&quot;] #sidebar &#123;
+    transition: all 300ms !important; /*这一行的300ms可以修改为适当的数值*/
+    min-width: var(--wide-tab-width) !important;
+    max-width: var(--wide-tab-width) !important;
+    z-index: 1;
+&#125;
+</code></pre>
+<h3 id="隐藏顶部原生的水平标签栏"><a href="#隐藏顶部原生的水平标签栏" class="headerlink" title="隐藏顶部原生的水平标签栏"></a>隐藏顶部原生的水平标签栏</h3><p>在<code>userChrome.css</code>中添加这样如下代码：</p>
+<pre><code class="css">/* hides the native tabs */
+#TabsToolbar &#123;
+  visibility: collapse;
+&#125;
+</code></pre>
+<p>重启浏览器，原生的水平标签栏应当已经被隐藏了。</p>
+<h3 id="隐藏最顶部的标题栏-不建议"><a href="#隐藏最顶部的标题栏-不建议" class="headerlink" title="隐藏最顶部的标题栏(不建议)"></a>隐藏最顶部的标题栏(不建议)</h3><p>在工具栏上右键，进入自定义工具栏(Customize Toolbar…)，在下方取消勾选标题栏(Title Bar)并保存。</p>
+<p>如果你已经隐藏了顶部原生的水平标签栏，那么我不建议你关闭标题栏。</p>
 
     </div>
     
